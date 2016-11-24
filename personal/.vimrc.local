@@ -1,0 +1,5 @@
+"colorscheme desert
+"let g:solarized_temcolors=16
+"color solarized
+set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
+
