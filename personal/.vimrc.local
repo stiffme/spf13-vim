@@ -1,5 +1,12 @@
 "colorscheme desert
 "let g:solarized_temcolors=16
 "color solarized
+"color peaksea
 set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
-
+map <C-TAB> :bn <CR>
+map <Leader>bd :Bclose <CR>
+let g:airline#extensions#bufferline#enabled = 0
+let g:solarized_temcolors=16
+color solarized
+autocmd Filetype c set nolist
+autocmd Filetype cpp set nolist
