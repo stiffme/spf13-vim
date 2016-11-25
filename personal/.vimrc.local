@@ -8,5 +8,23 @@ map <Leader>bd :Bclose <CR>
 let g:airline#extensions#bufferline#enabled = 0
 let g:solarized_temcolors=16
 color solarized
-autocmd Filetype c set nolist
-autocmd Filetype cpp set nolist
+autocmd Filetype c nested set nolist
+autocmd Filetype cpp nested set nolist
+set tags=tags
+
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,.git  " Windows
+let NERDTreeRespectWildIgnore=1
+
+call NERDTreeAddKeyMap({
+       \ 'key': '<C-F12>',
+       \ 'callback': 'NERDTreeCtagsHandler',
+       \ 'quickhelpText': 'generate ctags on this directory',
+       \ 'scope': 'DirNode' })
+
+function! NERDTreeCtagsHandler(dirnode)
+    "let dirname = a:dirnode.getDir()
+    echo items(a:dirnode)
+    "execute '!ctags -R --c++-kinds=+p -c-kinds=+p --fields=+ialS --extra=+q '.dirname ' -f  ' . dirname . '/tags'. <CR> 
+endfunction
+
+
