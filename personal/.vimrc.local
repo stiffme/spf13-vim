@@ -2,14 +2,45 @@
 "let g:solarized_temcolors=16
 "color solarized
 "color peaksea
-set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
-map <C-TAB> :bn <CR>
-map <Leader>bd :Bclose <CR>
+
+if has('win32') && has('directx')
+    set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
+endif
+
+map <C-TAB>     : bn <CR>
+map <Leader>bd  : Bclose <CR>
+map <Leader>bod : call MyCloseOtherBuffers() <CR>
+map <F6>        : set spell! <CR>
+
+
 let g:airline#extensions#bufferline#enabled = 0
-let g:solarized_temcolors=16
-color solarized
+"let g:solarized_temcolors=16
+"color solarized
+color molokai
 autocmd Filetype c nested set nolist
 autocmd Filetype cpp nested set nolist
 set tags=tags
 
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,.git  " Windows
+
+"NERDTree Optoins
+let NERDTreeRespectWildIgnore = 1
+let NERDTreeQuitOnOpen = 0
+let g:signify_vcs_list = ['git']
+let g:ycm_confirm_extra_conf = 0
+
+fun! MyCloseOtherBuffers()   
+    let curbuf = bufname(bufnr(""))
+    if buflisted(curbuf) == 0
+        return
+    endif
+
+    let c = 1
+    while c <= bufnr("$")
+        let itername = bufname(c)
+        if buflisted(itername) && itername != curbuf
+            execute ':Bclose '.c
+        endif
+		let c = c + 1
+    endwhile
+endfunction

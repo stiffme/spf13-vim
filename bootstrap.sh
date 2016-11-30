@@ -17,7 +17,7 @@
 ############################  SETUP PARAMETERS
 app_name='spf13-vim'
 [ -z "$APP_PATH" ] && APP_PATH="$HOME/.spf13-vim-3"
-[ -z "$REPO_URI" ] && REPO_URI='https://github.com/spf13/spf13-vim.git'
+[ -z "$REPO_URI" ] && REPO_URI='https://github.com/stiffme/spf13-vim.git'
 [ -z "$REPO_BRANCH" ] && REPO_BRANCH='3.0'
 debug_mode='0'
 fork_maintainer='0'
@@ -150,6 +150,9 @@ setup_fork_mode() {
         lnif "$source_path/.vimrc.fork"         "$target_path/.vimrc.fork"
         lnif "$source_path/.vimrc.bundles.fork" "$target_path/.vimrc.bundles.fork"
         lnif "$source_path/.vimrc.before.fork"  "$target_path/.vimrc.before.fork"
+        lnif "$source_path/personal/.vimrc.local" "$target_path/.vimrc.local"
+        lnif "$source_path/personal/.vimrc.before.local" "$target_path/.vimrc.before.local"
+        lnif "$source_path/personal/.vimrc.bundles.local" "$target_path/.vimrc.bundles.local"
 
         ret="$?"
         success "Created fork maintainer files."
