@@ -42,7 +42,6 @@ call mklink "%HOME%\.vimrc.local" "%APP_PATH%\personal\.vimrc.local"
 call mklink "%HOME%\.vimrc.bundles.local" "%APP_PATH%\personal\.vimrc.bundles.local"
 call mklink "%HOME%\.vimrc.before.local" "%APP_PATH%\personal\.vimrc.before.local"
 
-
 IF NOT EXIST "%APP_PATH%\.vim\bundle" (
     call mkdir "%APP_PATH%\.vim\bundle"
 )
@@ -55,4 +54,8 @@ IF NOT EXIST "%HOME%/.vim/bundle/vundle" (
   call cd %HOME%
 )
 
-call vim -u "%APP_PATH%/.vimrc.bundles" +BundleInstall! +BundleClean! +qall
+call vim  +BundleInstall +BundleClean! +qall
+
+IF EXIST "%HOME%\.vim\bundle\nerdtree\nerdtree_plugin" (
+    call mklink "%HOME%\.vim\bundle\nerdtree\nerdtree_plugin\personal.vim" "%APP_PATH%\personal\nerdtree_personal.vim"
+)

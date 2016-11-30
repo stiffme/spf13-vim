@@ -6,8 +6,8 @@ call NERDTreeAddKeyMap({
 
 function! NERDTreeCtagsHandler(dirnode)
     "let dirname = a:dirnode.getDir()
-    echo items(a:dirnode)
-    "execute '!ctags -R --c++-kinds=+p -c-kinds=+p --fields=+ialS --extra=+q '.dirname ' -f  ' . dirname . '/tags'. <CR> 
+    echo items(a:dirnode.path)
+    "execute '!ctags -R --c++-kinds=+p -c-kinds=+p --fields=+ialS --extra=+q '.dirname ' -f  ' . dirname . '/tags'. <CR>
 endfunction
 
 
