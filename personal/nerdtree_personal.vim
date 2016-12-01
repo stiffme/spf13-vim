@@ -1,4 +1,4 @@
-f exists("g:loaded_nerdtree_personal")
+if exists('g:loaded_nerdtree_personal')
     finish
 endif
 let g:loaded_nerdtree_personal = 1
