@@ -44,3 +44,10 @@ fun! MyCloseOtherBuffers()
 		let c = c + 1
     endwhile
 endfunction
+
+if executable('ag')
+    nnoremap <Leader> cf :CtrlPag<cr>
+    vnoremap <Leader> cf :CtrlPagVisual<cr>
+    nnoremap <Leader> ca :CtrlPagLocate<cr>
+    nnoremap <Leader> cp :CtrlPagPrevious<cr>
+endif

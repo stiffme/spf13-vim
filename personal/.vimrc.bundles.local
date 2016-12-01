@@ -7,3 +7,7 @@ UnBundle 'scrooloose/syntastic'
 UnBundle 'mattn/gist-vim'
 UnBundle 'tpope/vim-commentary'
 "UnBundle 'Valloric/YouCompleteMe'
+
+if executable('ag')
+    Bundle 'lokikl/vim-ctrlp-ag'
+endif
