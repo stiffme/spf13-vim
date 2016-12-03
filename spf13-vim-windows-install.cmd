@@ -59,3 +59,6 @@ call vim  +BundleInstall +BundleClean! +qall
 IF EXIST "%HOME%\.vim\bundle\nerdtree\nerdtree_plugin" (
     call mklink "%HOME%\.vim\bundle\nerdtree\nerdtree_plugin\personal.vim" "%APP_PATH%\personal\nerdtree_personal.vim"
 )
+
+call md "%HOME%/.vim/plugin"
+call mklink "%HOME%\.vim\plugin\bclose.vim" "%APP_PATH%\personal\bclose.vim"
