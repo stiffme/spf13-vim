@@ -3,7 +3,7 @@
 "color solarized
 "color peaksea
 
-if has('win32') && has('directx')
+if has('win32') && has('directx') && has('gui')
     set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
 endif
 
@@ -23,11 +23,17 @@ set tags=tags
 
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,.git  " Windows
 
+"Toggle spell check F7
+silent map <F7> :setlocal spell!<CR>
+noremap <Leader>a :Ack <cword><cr>
+
 "NERDTree Optoins
 let NERDTreeRespectWildIgnore = 1
 let NERDTreeQuitOnOpen = 0
 let g:signify_vcs_list = ['git']
 let g:ycm_confirm_extra_conf = 0
+
+
 
 fun! MyCloseOtherBuffers()   
     let curbuf = bufname(bufnr(""))

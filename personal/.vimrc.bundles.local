@@ -7,7 +7,11 @@ UnBundle 'scrooloose/syntastic'
 UnBundle 'mattn/gist-vim'
 UnBundle 'tpope/vim-commentary'
 "UnBundle 'Valloric/YouCompleteMe'
+"Bundle 'Shougo/vimshell.vim'
+"if executable('ag')
+    "Bundle 'lokikl/vim-ctrlp-ag'
+"endif
 
-if executable('ag')
-    Bundle 'lokikl/vim-ctrlp-ag'
+if has('win32') && count(g:spf13_bundle_groups, 'neocomplete')
+    Bundle 'Shougo/vimproc.vim'
 endif
