@@ -6,6 +6,7 @@ Bundle 'airblade/vim-gitgutter'
 UnBundle 'scrooloose/syntastic'
 UnBundle 'mattn/gist-vim'
 UnBundle 'tpope/vim-commentary'
+"Bundle 'mattn/benchvimrc-vim'
 "UnBundle 'Valloric/YouCompleteMe'
 "Bundle 'Shougo/vimshell.vim'
 "if executable('ag')
