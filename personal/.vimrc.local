@@ -6,7 +6,7 @@
 if has('win32') && has('directx')
     set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
 endif
-
+set nospell
 map <C-TAB>     : bn <CR>
 map <Leader>bd  : Bclose <CR>
 map <Leader>bod : call MyCloseOtherBuffers() <CR>
@@ -16,7 +16,7 @@ map <F6>        : set spell! <CR>
 let g:airline#extensions#bufferline#enabled = 0
 "let g:solarized_temcolors=16
 "color solarized
-color molokai
+color desert
 autocmd Filetype c nested set nolist
 autocmd Filetype cpp nested set nolist
 set tags=tags
