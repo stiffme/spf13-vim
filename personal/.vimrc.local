@@ -11,7 +11,7 @@ map <C-TAB>     : bn <CR>
 map <Leader>bd  : Bclose <CR>
 map <Leader>bod : call MyCloseOtherBuffers() <CR>
 map <F6>        : set spell! <CR>
-
+set fileencodings=ucs-bom,utf-8,latin1
 
 let g:airline#extensions#bufferline#enabled = 0
 "let g:solarized_temcolors=16
