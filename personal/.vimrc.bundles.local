@@ -12,7 +12,14 @@ UnBundle 'tpope/vim-commentary'
 "if executable('ag')
     "Bundle 'lokikl/vim-ctrlp-ag'
 "endif
+UnBundle 'rust-lang/rust.vim'
+UnBundle 'mattn/webapi-vim'
+UnBundle 'saltstack/salt-vim'
 
 if has('win32') && count(g:spf13_bundle_groups, 'neocomplete')
     Bundle 'Shougo/vimproc.vim'
+endif
+
+if has('python') || has('python3')
+    Bundle 'FelikZ/ctrlp-py-matcher'
 endif

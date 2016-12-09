@@ -25,15 +25,14 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,.git  " Windows
 
 "Toggle spell check F7
 silent map <F7> :setlocal spell!<CR>
-noremap <Leader>a :Ack <cword><cr>
 
 "NERDTree Optoins
 let NERDTreeRespectWildIgnore = 1
 let NERDTreeQuitOnOpen = 0
 let g:signify_vcs_list = ['git']
-let g:ycm_confirm_extra_conf = 0
 
-
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_by_filename = 1
 
 fun! MyCloseOtherBuffers()   
     let curbuf = bufname(bufnr(""))
@@ -52,6 +51,6 @@ fun! MyCloseOtherBuffers()
 endfunction
 
 if executable('ag')
-    noremap <Leader>a :Ack <cword><CR>
-    vnoremap <Leader>a y:Ack <C-r>=fnameescape(@")<CR><CR>
+    noremap <Leader>cf :Ack <cword><CR>
+    vnoremap <Leader>cf y:Ack <C-r>=fnameescape(@")<CR><CR>
 endif
