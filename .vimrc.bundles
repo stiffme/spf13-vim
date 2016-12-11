@@ -161,7 +161,7 @@
             Bundle 'godlygeek/tabular'
             Bundle 'luochen1990/rainbow'
             if executable('ctags')
-                Bundle 'stiffme/tagbar'
+                Bundle 'majutsushi/tagbar'
             endif
         endif
     " }
