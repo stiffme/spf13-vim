@@ -15,11 +15,11 @@ UnBundle 'tpope/vim-commentary'
 UnBundle 'rust-lang/rust.vim'
 UnBundle 'mattn/webapi-vim'
 UnBundle 'saltstack/salt-vim'
-
+UnBundle 'vim-scripts/a.vim'
 if has('win32') && count(g:spf13_bundle_groups, 'neocomplete')
     Bundle 'Shougo/vimproc.vim'
 endif
 
-if has('python') || has('python3')
+if (has('python') || has('python3')) &&  isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
     Bundle 'FelikZ/ctrlp-py-matcher'
 endif

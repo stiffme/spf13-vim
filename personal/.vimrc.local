@@ -1,21 +1,22 @@
-"colorscheme desert
-"let g:solarized_temcolors=16
-"color solarized
-"color peaksea
-
+"Mapping table
+"Ctrl+Tab    : Switch buffers
+"<Leader>bg  : Close current buffer
+"<Leader>bod : Close all other buffers
+"<F7>        : Toggle spell
+"<F5>        : Search filename without extension
+"<F6>        : Search files word under cursor or selected content
+"<Leader>cf  : Search keyword in files
 if has('win32') && has('directx') && has('gui')
     set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
 endif
 set nospell
-map <C-TAB>     : bn <CR>
-map <Leader>bd  : Bclose <CR>
-map <Leader>bod : call MyCloseOtherBuffers() <CR>
-map <F6>        : set spell! <CR>
+nmap <C-TAB>     : bn <CR>
+nmap <Leader>bd  : Bclose <CR>
+nmap <Leader>bod : call MyCloseOtherBuffers() <CR>
 set fileencodings=ucs-bom,utf-8,latin1
+silent map <F7> :setlocal spell!<CR>
 
 let g:airline#extensions#bufferline#enabled = 0
-"let g:solarized_temcolors=16
-"color solarized
 color desert
 autocmd Filetype c nested set nolist
 autocmd Filetype cpp nested set nolist
@@ -23,17 +24,23 @@ set tags=tags
 
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,.git  " Windows
 
-"Toggle spell check F7
-silent map <F7> :setlocal spell!<CR>
 
 "NERDTree Optoins
 let NERDTreeRespectWildIgnore = 1
 let NERDTreeQuitOnOpen = 0
 let g:signify_vcs_list = ['git']
 
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-let g:ctrlp_by_filename = 1
-
+if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
+    let g:ctrlp_by_filename = 1
+    let g:ctrlp_use_caching = 1
+    let g:ctrlp_lazy_update = 1
+    noremap <F5> : call SearchCtrlpContent( expand('%:t:r'))<CR>
+    nmap <F6> <C-P><C-\>w
+    vmap <F6> "ay:CtrlP<CR><C-\>ra
+    if isdirectory(expand("~/.vim/bundle/ctrlp-py-matcher/"))
+        let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+    endif
+endif
 fun! MyCloseOtherBuffers()   
     let curbuf = bufname(bufnr(""))
     if buflisted(curbuf) == 0
@@ -49,6 +56,11 @@ fun! MyCloseOtherBuffers()
 		let c = c + 1
     endwhile
 endfunction
+
+fun! SearchCtrlpContent(content)
+    let @a=a:content
+    execute "normal \<C-p>\<C-\>ra"
+endfun
 
 if executable('ag')
     noremap <Leader>cf :Ack <cword><CR>
