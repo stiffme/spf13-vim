@@ -62,3 +62,6 @@ IF EXIST "%HOME%\.vim\bundle\nerdtree\nerdtree_plugin" (
 
 call md "%HOME%/.vim/plugin"
 call mklink "%HOME%\.vim\plugin\bclose.vim" "%APP_PATH%\personal\bclose.vim"
+IF EXIST "%APP_PATH%\.vim\bundle\vimproc.vim\lib" (
+    call copy "%APP_PATH%\personal\compiled\vimproc_win64.dll" "%APP_PATH%\.vim\bundle\vimproc.vim\lib\vimproc_win64.dll"
+)
