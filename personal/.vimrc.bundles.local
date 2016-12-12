@@ -16,6 +16,7 @@ UnBundle 'rust-lang/rust.vim'
 UnBundle 'mattn/webapi-vim'
 UnBundle 'saltstack/salt-vim'
 UnBundle 'vim-scripts/a.vim'
+UnBundle 'spf13/vim-preview'
 if has('win32') && count(g:spf13_bundle_groups, 'neocomplete')
     Bundle 'Shougo/vimproc.vim'
 endif
