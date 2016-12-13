@@ -16,7 +16,7 @@ nmap <Leader>bod : call MyCloseOtherBuffers() <CR>
 set fileencodings=ucs-bom,utf-8,latin1
 silent map <F7> :setlocal spell!<CR>
 
-let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#bufferline#enabled = 0
 let g:airline_section_warning = ''
 let g:airline_theme = 'light'
 color desert
