@@ -17,6 +17,7 @@ UnBundle 'mattn/webapi-vim'
 UnBundle 'saltstack/salt-vim'
 UnBundle 'vim-scripts/a.vim'
 UnBundle 'spf13/vim-preview'
+Bundle 'octol/vim-cpp-enhanced-highlight'
 if has('win32') && count(g:spf13_bundle_groups, 'neocomplete')
     Bundle 'Shougo/vimproc.vim'
 endif
