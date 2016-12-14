@@ -35,7 +35,10 @@ let g:signify_vcs_list = ['git']
 if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
     let g:ctrlp_by_filename = 1
     let g:ctrlp_use_caching = 1
-    "let g:ctrlp_lazy_update = 1
+    let g:ctrlp_lazy_update = 0
+    let g:ctrlp_max_files = 1000000
+    let g:ctrlp_max_depth = 100
+    let g:ctrlp_working_path_mode = 'ra'
     noremap <F5> : call SearchCtrlpContent( expand('%:t:r'))<CR>
     nmap <F6> <C-P><C-\>w
     vmap <F6> "ay:CtrlP<CR><C-\>ra
