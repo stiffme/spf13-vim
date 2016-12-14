@@ -13,7 +13,7 @@ call NERDTreeAddKeyMap({
 
 function! NERDTreeCtagsHandler(dirnode)
     let dirname = a:dirnode.path.str()
-    silent let output = system(' ctags -R ' . ' -f  ' . dirname . '\tags ' . '--c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname)
+    silent let output = system(' ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname)
     if filereadable(dirname . '\tags')
         echom 'tags generated successfully.'
     else 
