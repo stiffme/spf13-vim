@@ -3,6 +3,12 @@ if exists('g:loaded_nerdtree_personal')
 endif
 let g:loaded_nerdtree_personal = 1
 
+try
+    call vimproc#version()
+    let g:nerdtree_personal_vimproc = 1
+catch //
+    let g:nerdtree_personal_vimproc = 0
+endtry
 
 
 call NERDTreeAddKeyMap({
@@ -13,7 +19,13 @@ call NERDTreeAddKeyMap({
 
 function! NERDTreeCtagsHandler(dirnode)
     let dirname = a:dirnode.path.str()
-    silent let output = system(' ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname)
+    "silent let output = system(' ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname)
+    let mycmd = ' ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname
+    if(g:nerdtree_personal_vimproc == 1)
+        let output = vimproc#cmd#system(mycmd)
+    else
+        let output = system(mycmd)
+    endif
     if filereadable(dirname . '\tags')
         echom 'tags generated successfully.'
     else 
