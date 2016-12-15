@@ -21,8 +21,9 @@ function! NERDTreeCtagsHandler(dirnode)
     let dirname = a:dirnode.path.str()
     "silent let output = system(' ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname)
     let mycmd = ' ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname
+    echom mycmd
     if(g:nerdtree_personal_vimproc == 1)
-        let output = vimproc#cmd#system(mycmd)
+        let output = system(mycmd)
     else
         let output = system(mycmd)
     endif
