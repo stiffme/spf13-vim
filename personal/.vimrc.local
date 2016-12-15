@@ -1,11 +1,12 @@
 "Mapping table
-"Ctrl+Tab    : Switch buffers
-"<Leader>bg  : Close current buffer
-"<Leader>bod : Close all other buffers
-"<F7>        : Toggle spell
-"<F5>        : Search filename without extension
-"<F6>        : Search files word under cursor or selected content
-"<Leader>cf  : Search keyword in files
+"Ctrl+Tab         : Switch buffers
+"<Leader>bg       : Close current buffer
+"<Leader>bod      : Close all other buffers
+"<F7>             : Toggle spell
+"<F5>             : Search filename without extension
+"<F6>             : Search files word under cursor or selected content
+"<Leader>cf       : Search keyword in files
+"Visual <Leader>f : Search selected word in current file
 if has('win32') && has('directx') && has('gui')
     set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
 endif
@@ -19,6 +20,7 @@ silent map <F7> :setlocal spell!<CR>
 let g:airline#extensions#bufferline#enabled = 0
 let g:airline_section_warning = ''
 let g:airline_theme = 'light'
+vnoremap <expr> <Leader>f 'y/\V'.escape(@",'\').'<CR>'
 color desert
 autocmd Filetype c nested set nolist
 autocmd Filetype cpp nested set nolist
