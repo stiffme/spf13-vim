@@ -4,7 +4,7 @@ if has('win32') && has('directx')
     let g:spf13_no_big_font = 1
     set guifont=Consolas:h12,Menlo:h12,Consolas:h12,Courier_New:h12
 endif
-let g:spf13_bundle_groups=['general', 'programming', 'misc', 'neocomplete' ]
+let g:spf13_bundle_groups=['general', 'programming', 'misc', 'youcompleteme' ]
 
 "let g:airline_powerline_fonts = 1
 let g:spf13_no_views = 1

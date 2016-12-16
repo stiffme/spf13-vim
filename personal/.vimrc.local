@@ -48,6 +48,11 @@ if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
         let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
     endif
 endif
+
+if isdirectory(expand('~/.vim/bundle/ycm_simple_conf'))
+    let g:ycm_simple_conf_active = 1
+endif
+
 fun! MyCloseOtherBuffers()   
     let curbuf = bufname(bufnr(""))
     if buflisted(curbuf) == 0
