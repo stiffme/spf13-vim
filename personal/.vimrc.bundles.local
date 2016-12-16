@@ -21,9 +21,9 @@ Bundle 'octol/vim-cpp-enhanced-highlight'
 if has('win32') && count(g:spf13_bundle_groups, 'neocomplete')
     Bundle 'Shougo/vimproc.vim'
 endif
-if isdirectory(expand('~/.vim/bundle/YouCompleteMe'))
-    Bundle 'stiffme/ycm_simple_conf'
-endif
+"if isdirectory(expand('~/.vim/bundle/YouCompleteMe'))
+    "Bundle 'stiffme/ycm_simple_conf'
+"endif
 if (has('python') || has('python3')) &&  isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
     Bundle 'FelikZ/ctrlp-py-matcher'
 endif

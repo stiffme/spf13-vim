@@ -64,4 +64,12 @@ call md "%HOME%/.vim/plugin"
 call mklink "%HOME%\.vim\plugin\bclose.vim" "%APP_PATH%\personal\bclose.vim"
 IF EXIST "%APP_PATH%\.vim\bundle\vimproc.vim\lib" (
     call copy "%APP_PATH%\personal\compiled\vimproc_win64.dll" "%APP_PATH%\.vim\bundle\vimproc.vim\lib\vimproc_win64.dll"
+
+)
+
+IF EXIST "%HOME%\.vim\bundle\YouCompleteMe\third_party\ycmd\ycmd\" (
+    call mklink "%HOME%\.vim\bundle\YouCompleteMe\third_party\ycmd\ycmd\ycm_simple_conf.py" "%APP_PATH%\personal\compiled\ycm_simple_conf.py"
+    call mklink "%HOME%\.vim\bundle\YouCompleteMe\third_party\ycmd\ycm_core.pyd" "%APP_PATH%\personal\compiled\ycm_core.pyd"
+    call mklink "%HOME%\.vim\bundle\YouCompleteMe\third_party\ycmd\libclang.dll" "%APP_PATH%\personal\compiled\libclang.dll"
+    echo "changing %HOME%\.vim\bundle\YouCompleteMe\third_party\ycmd\ycmd\default_settings.json to use ycm_simple_conf.py"
 )
