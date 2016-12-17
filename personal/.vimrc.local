@@ -53,6 +53,10 @@ if isdirectory(expand('~/.vim/bundle/ycm_simple_conf'))
     let g:ycm_simple_conf_active = 1
 endif
 
+if isdirectory(expand('~/.vim/bundle/YouCompleteMe/'))
+    let g:ycm_global_ycm_extra_conf = 'ycm_simple_conf.py'
+endif
+
 fun! MyCloseOtherBuffers()   
     let curbuf = bufname(bufnr(""))
     if buflisted(curbuf) == 0
