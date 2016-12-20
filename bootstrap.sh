@@ -125,6 +125,9 @@ create_symlinks() {
     lnif "$source_path/.vimrc.bundles" "$target_path/.vimrc.bundles"
     lnif "$source_path/.vimrc.before"  "$target_path/.vimrc.before"
     lnif "$source_path/.vim"           "$target_path/.vim"
+    lnif "$source_path/personal/.vimrc.local" "$target_path/.vimrc.local"
+    lnif "$source_path/personal/.vimrc.before.local" "$target_path/.vimrc.before.local"
+    lnif "$source_path/personal/.vimrc.bundles.local" "$target_path/.vimrc.bundles.local"
 
     if program_exists "nvim"; then
         lnif "$source_path/.vim"       "$target_path/.config/nvim"
@@ -203,7 +206,7 @@ sync_repo       "$HOME/.vim/bundle/vundle" \
                 "master" \
                 "vundle"
 
-setup_vundle    "$APP_PATH/.vimrc.bundles.default"
+setup_vundle    "$APP_PATH/.vimrc"
 
 msg             "\nThanks for installing $app_name."
 msg             "© `date +%Y` http://vim.spf13.com/"
