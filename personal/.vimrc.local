@@ -21,7 +21,8 @@ let g:airline#extensions#bufferline#enabled = 0
 let g:airline_section_warning = ''
 let g:airline_theme = 'light'
 vnoremap <expr> <Leader>f 'y/\V'.escape(@",'\').'<CR>'
-color desert
+set background=dark
+colorscheme solarized
 autocmd Filetype c nested set nolist
 autocmd Filetype cpp nested set nolist
 set tags=tags
