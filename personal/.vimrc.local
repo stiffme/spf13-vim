@@ -26,7 +26,7 @@ colorscheme solarized
 autocmd Filetype c nested set nolist
 autocmd Filetype cpp nested set nolist
 set tags=tags
-
+set foldmethod=syntax
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,.git  " Windows
 
 
@@ -48,6 +48,7 @@ if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
     if isdirectory(expand("~/.vim/bundle/ctrlp-py-matcher/"))
         let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
     endif
+    noremap <C-B> :CtrlPBuffer<cr>
 endif
 
 if isdirectory(expand('~/.vim/bundle/ycm_simple_conf'))
