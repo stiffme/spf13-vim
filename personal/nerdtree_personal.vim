@@ -21,9 +21,12 @@ function! NERDTreeCtagsHandler(dirnode)
     let dirname = a:dirnode.path.str()
     "silent let output = system(' ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname)
     let mycmd = ' ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname
-    echom mycmd
-    if(g:nerdtree_personal_vimproc == 1)
-        let output = system(mycmd)
+    if( has('job') == 1)
+        let output_job = job_start('ctags --help', {'exit_cb' : 'CtagsExitHandler'} )
+        if(job_status(output_job) != 'fail')
+            echom 'generating tags in background...'
+        endif
+        return
     else
         let output = system(mycmd)
     endif
@@ -34,4 +37,13 @@ function! NERDTreeCtagsHandler(dirnode)
     endif
     call a:dirnode.refresh()
     call NERDTreeRender()
+endfunction
+
+function! CtagsExitHandler(job, status)
+    if(a:status == 0) 
+        echom 'tags generated!'
+    else 
+        echom 'ctags returns ' . a:status
+    endif
+
 endfunction
