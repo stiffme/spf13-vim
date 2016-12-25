@@ -35,7 +35,8 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,.git  " Windows
 let NERDTreeRespectWildIgnore = 1
 let NERDTreeQuitOnOpen = 0
 let g:signify_vcs_list = ['git']
-
+"starting from $HOME
+cd $HOME
 if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
     let g:ctrlp_by_filename = 1
     let g:ctrlp_use_caching = 1
@@ -73,7 +74,7 @@ fun! MyCloseOtherBuffers()
         if buflisted(itername) && itername != curbuf
             execute ':Bclose '.c
         endif
-		let c = c + 1
+    let c = c + 1
     endwhile
 endfunction
 
@@ -86,3 +87,12 @@ if executable('ag')
     noremap <Leader>cf :Ack <cword><CR>
     vnoremap <Leader>cf y:Ack <C-r>=fnameescape(@")<CR><CR>
 endif
+
+function! TestJob()
+    let job = job_start('ctags --help',{'mode':'raw','timeout':'2000'})
+    let chan = job_getchannel(job)
+    sleep 100m
+    echom ch_readraw(chan)
+endfunction
+
+map <Leader>t :call TestJob()<CR>
