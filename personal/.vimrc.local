@@ -29,7 +29,7 @@ autocmd Filetype cpp nested set nolist
 set tags=tags
 set foldmethod=syntax
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,.git  " Windows
-
+let g:tagbar_python_system = '1'
 
 "NERDTree Optoins
 let NERDTreeRespectWildIgnore = 1
