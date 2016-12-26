@@ -20,11 +20,13 @@ call NERDTreeAddKeyMap({
 function! NERDTreeCtagsHandler(dirnode)
     let dirname = a:dirnode.path.str()
     "silent let output = system(' ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname)
-    let mycmd = ' ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname
+    let mycmd = 'ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname
     if( has('job') == 1)
-        let output_job = job_start('ctags --help', {'exit_cb' : 'CtagsExitHandler'} )
+        let output_job = job_start(mycmd, {'exit_cb' : 'CtagsExitHandler'} )
         if(job_status(output_job) != 'fail')
-            echom 'generating tags in background...'
+            echo 'generating tags in background...'
+        else
+            echom 'job_start failure:' . job_status(output_job)
         endif
         return
     else
@@ -41,7 +43,7 @@ endfunction
 
 function! CtagsExitHandler(job, status)
     if(a:status == 0) 
-        echom 'tags generated!'
+        echo 'tags generated!'
     else 
         echom 'ctags returns ' . a:status
     endif
