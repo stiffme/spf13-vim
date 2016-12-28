@@ -89,11 +89,8 @@ if executable('ag')
     vnoremap <Leader>cf y:Ack <C-r>=fnameescape(@")<CR><CR>
 endif
 
-function! TestJob()
-    let job = job_start('ctags --help',{'mode':'raw','timeout':'2000'})
-    let chan = job_getchannel(job)
-    sleep 100m
-    echom ch_readraw(chan)
-endfunction
-
-map <Leader>t :call TestJob()<CR>
+let g:netrw_cygwin = 0
+let g:netrw_ssh_cmd  = '"plink.exe" -i C:\Users\stiff\Documents\ssh\id_rsa.ppk -batch -T -ssh'
+let g:netrw_scp_cmd  = '"pscp.exe"  -i C:\Users\stiff\Documents\ssh\id_rsa.ppk -batch -q -scp'
+let g:netrw_sftp_cmd = '"pscp.exe"  -i C:\Users\stiff\Documents\ssh\id_rsa.ppk -batch -q -sftp'
+let g:netrw_list_cmd = '"plink.exe" -i C:\Users\stiff\Documents\ssh\id_rsa.ppk HOSTNAME ls -Fa' 
