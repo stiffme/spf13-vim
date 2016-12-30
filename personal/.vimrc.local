@@ -21,6 +21,9 @@ silent map <F7> :setlocal spell!<CR>
 let g:airline#extensions#bufferline#enabled = 0
 let g:airline_section_warning = ''
 let g:airline_theme = 'light'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 vnoremap <expr> <Leader>f 'y/\V'.escape(@",'\').'<CR>'
 set background=dark
 colorscheme solarized
@@ -52,7 +55,7 @@ if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
     if isdirectory(expand("~/.vim/bundle/ctrlp-py-matcher/"))
         let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
     endif
-    noremap <C-B> :CtrlPBuffer<cr>
+    "noremap <Alt-P> :CtrlPBuffer<cr>
 endif
 
 if isdirectory(expand('~/.vim/bundle/ycm_simple_conf'))
@@ -90,7 +93,19 @@ if executable('ag')
 endif
 
 let g:netrw_cygwin = 0
-let g:netrw_ssh_cmd  = '"plink.exe" -i C:\Users\stiff\Documents\ssh\id_rsa.ppk -batch -T -ssh'
-let g:netrw_scp_cmd  = '"pscp.exe"  -i C:\Users\stiff\Documents\ssh\id_rsa.ppk -batch -q -scp'
-let g:netrw_sftp_cmd = '"pscp.exe"  -i C:\Users\stiff\Documents\ssh\id_rsa.ppk -batch -q -sftp'
-let g:netrw_list_cmd = '"plink.exe" -i C:\Users\stiff\Documents\ssh\id_rsa.ppk HOSTNAME ls -Fa' 
+let g:netrw_ssh_cmd  = '"plink.exe" -i C:\cygwin64\home\esipeng\.ssh\id_rsa.ppk -batch -T -ssh'
+let g:netrw_scp_cmd  = '"pscp.exe"  -i C:\cygwin64\home\esipeng\.ssh\id_rsa.ppk -batch -q -batch -scp'
+"let g:netrw_sftp_cmd = '"psftp.exe"  -i C:\cygwin64\home\esipeng\.ssh\id_rsa.ppk -batch -q -batch -sftp'
+let g:netrw_list_cmd = '"plink.exe" -i C:\cygwin64\home\esipeng\.ssh\id_rsa.ppk HOSTNAME ls -Fa'
+
+if has('win32') && $HOME_SERV != '' && $USERNAME != ''
+    let g:netrw_liststyle = 3
+    noremap <Leader>h :call OpenRemoteHome()<CR>
+endif
+
+fun! OpenRemoteHome()
+    exec "80vs"
+    exec "wincmd p"
+    exec "e scp://" . $USERNAME . "@" . $HOME_SERV. "/"
+endfun
+
