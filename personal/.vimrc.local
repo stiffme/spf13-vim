@@ -66,6 +66,10 @@ if isdirectory(expand('~/.vim/bundle/YouCompleteMe/'))
     let g:ycm_global_ycm_extra_conf = 'ycm_simple_conf.py'
 endif
 
+if isdirectory(expand('~/.vim/bundle/vim-fugitive/'))
+    autocmd BufReadPost fugitive://* set bufhidden=delete
+endif
+
 fun! MyCloseOtherBuffers()   
     let curbuf = bufname(bufnr(""))
     if buflisted(curbuf) == 0
