@@ -18,12 +18,14 @@ nmap <Leader>bod : call MyCloseOtherBuffers() <CR>
 set fileencodings=ucs-bom,utf-8,latin1
 silent map <F7> :setlocal spell!<CR>
 
-let g:airline#extensions#bufferline#enabled = 0
-let g:airline_section_warning = ''
-let g:airline_theme = 'light'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+if isdirectory(expand('~/.vim/bundle/vim-airline/'))
+    let g:airline#extensions#bufferline#enabled = 0
+    let g:airline_section_warning = ''
+    let g:airline_theme = 'light'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#buffer_nr_show = 1
+    let g:airline#extensions#tabline#formatter = 'unique_tail'
+endif
 vnoremap <expr> <Leader>f 'y/\V'.escape(@",'\').'<CR>'
 set background=dark
 colorscheme solarized
@@ -66,6 +68,10 @@ if isdirectory(expand('~/.vim/bundle/YouCompleteMe/'))
     let g:ycm_global_ycm_extra_conf = 'ycm_simple_conf.py'
 endif
 
+if isdirectory(expand('~/.vim/bundle/vim-fugitive/'))
+    autocmd BufReadPost fugitive://* set bufhidden=delete
+endif
+
 fun! MyCloseOtherBuffers()   
     let curbuf = bufname(bufnr(""))
     if buflisted(curbuf) == 0
@@ -92,15 +98,20 @@ if executable('ag')
     vnoremap <Leader>cf y:Ack <C-r>=fnameescape(@")<CR><CR>
 endif
 
-let g:netrw_cygwin = 0
-let g:netrw_ssh_cmd  = '"plink.exe" -i C:\cygwin64\home\esipeng\.ssh\id_rsa.ppk -batch -T -ssh'
-let g:netrw_scp_cmd  = '"pscp.exe"  -i C:\cygwin64\home\esipeng\.ssh\id_rsa.ppk -batch -q -batch -scp'
-"let g:netrw_sftp_cmd = '"psftp.exe"  -i C:\cygwin64\home\esipeng\.ssh\id_rsa.ppk -batch -q -batch -sftp'
-let g:netrw_list_cmd = '"plink.exe" -i C:\cygwin64\home\esipeng\.ssh\id_rsa.ppk HOSTNAME ls -Fa'
 
 if has('win32') && $HOME_SERV != '' && $USERNAME != ''
     let g:netrw_liststyle = 3
     noremap <Leader>h :call OpenRemoteHome()<CR>
+    if executable('plink.exe')
+        let g:netrw_cygwin = 0
+        let g:netrw_ssh_cmd  = '"plink.exe" -i C:\cygwin64\home\esipeng\.ssh\id_rsa.ppk -batch -T -ssh'
+        let g:netrw_list_cmd = '"plink.exe" -i C:\cygwin64\home\esipeng\.ssh\id_rsa.ppk HOSTNAME ls -Fa'
+    endif
+
+    if execute('pscp.exe')
+        let g:netrw_scp_cmd  = '"pscp.exe"  -i C:\cygwin64\home\esipeng\.ssh\id_rsa.ppk -batch -q -batch -scp'
+    endif
+
 endif
 
 fun! OpenRemoteHome()
