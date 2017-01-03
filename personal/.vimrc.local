@@ -104,7 +104,7 @@ if has('win32') && $HOME_SERV != '' && $USERNAME != ''
 endif
 
 fun! OpenRemoteHome()
-    exec "80vs"
+    exec "120vs"
     exec "wincmd p"
     exec "e scp://" . $USERNAME . "@" . $HOME_SERV. "/"
 endfun
