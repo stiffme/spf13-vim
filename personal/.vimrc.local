@@ -28,6 +28,9 @@ if isdirectory(expand('~/.vim/bundle/vim-airline/'))
 endif
 vnoremap <expr> <Leader>f 'y/\V'.escape(@",'\').'<CR>'
 set background=dark
+if isdirectory(expand("~/.vim/bundle/vim-colors-solarized/"))
+    let g:solarized_menu = 0
+endif
 colorscheme solarized
 autocmd Filetype c nested set nolist
 autocmd Filetype cpp nested set nolist
@@ -59,6 +62,7 @@ if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
     endif
     "noremap <Alt-P> :CtrlPBuffer<cr>
 endif
+
 
 if isdirectory(expand('~/.vim/bundle/ycm_simple_conf'))
     let g:ycm_simple_conf_active = 1
