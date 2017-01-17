@@ -28,4 +28,4 @@ if (has('python') || has('python3')) &&  isdirectory(expand("~/.vim/bundle/ctrlp
     Bundle 'FelikZ/ctrlp-py-matcher'
 endif
 
-
+Bundle "vim-scripts/Conque-Shell"
