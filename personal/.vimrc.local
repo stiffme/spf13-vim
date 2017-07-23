@@ -13,7 +13,7 @@ if has('win32') && has('directx') && has('gui')
 endif
 set nospell
 nmap <C-TAB>     : bn <CR>
-nmap <Leader>bd  : Bclose <CR>
+nmap <Leader>bd  : call MyCloseBuffer() <CR>
 nmap <Leader>bod : call MyCloseOtherBuffers() <CR>
 set fileencodings=ucs-bom,utf-8,latin1
 silent map <F7> :setlocal spell!<CR>
@@ -95,6 +95,13 @@ fun! MyCloseOtherBuffers()
     let c = c + 1
     endwhile
 endfunction
+
+fun! MyCloseBuffer()
+    let curbuf = matchstr("fugitive://",bufname(bufnr("")))
+    if empty(curbuf)
+        execute ":Bclose "
+    endif
+endfun
 
 fun! SearchCtrlpContent(content)
     let @a=a:content
