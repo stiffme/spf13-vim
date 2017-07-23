@@ -28,4 +28,8 @@ if (has('python') || has('python3')) &&  isdirectory(expand("~/.vim/bundle/ctrlp
     Bundle 'FelikZ/ctrlp-py-matcher'
 endif
 
-
+if has('nvim')
+    UnBundle 'altercation/vim-colors-solarized'
+    "Bundle 'frankier/neovim-colors-solarized-truecolor-only'
+    Bundle 'romainl/flattened'
+endif

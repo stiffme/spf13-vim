@@ -31,7 +31,11 @@ set background=dark
 if isdirectory(expand("~/.vim/bundle/vim-colors-solarized/"))
     let g:solarized_menu = 0
 endif
+set background=dark
 colorscheme solarized
+if has('nvim')
+    color flattened_dark
+endif
 autocmd Filetype c nested set nolist
 autocmd Filetype cpp nested set nolist
 set tags=tags
