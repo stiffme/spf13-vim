@@ -5,7 +5,7 @@ if has('win32') && has('directx')
     set guifont=Consolas:h12,Menlo:h12,Consolas:h12,Courier_New:h12
 endif
 if has('win32')
-	let g:spf13_bundle_groups=['general', 'programming', 'misc', 'youcompleteme' ]
+	let g:spf13_bundle_groups=['general', 'programming', 'misc' ]
 else
 	let g:spf13_bundle_groups=['general', 'programming', 'misc' ]
 endif

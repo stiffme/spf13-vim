@@ -12,14 +12,14 @@ UnBundle 'tpope/vim-commentary'
 "if executable('ag')
     "Bundle 'lokikl/vim-ctrlp-ag'
 "endif
-UnBundle 'rust-lang/rust.vim'
+"UnBundle 'rust-lang/rust.vim'
 UnBundle 'mattn/webapi-vim'
 UnBundle 'saltstack/salt-vim'
 UnBundle 'vim-scripts/a.vim'
 UnBundle 'spf13/vim-preview'
 Bundle 'octol/vim-cpp-enhanced-highlight'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'Shougo/vimshell.vim'
+"Bundle 'Shougo/vimproc.vim'
+"Bundle 'Shougo/vimshell.vim'
 UnBundle 'bling/vim-bufferline'
 "if isdirectory(expand('~/.vim/bundle/YouCompleteMe'))
     "Bundle 'stiffme/ycm_simple_conf'
@@ -34,3 +34,6 @@ if has('nvim')
     Bundle 'romainl/flattened'
 endif
 Bundle "vim-scripts/Conque-Shell"
+if (executable('cargo'))
+    Bundle 'timonv/vim-cargo'
+endif

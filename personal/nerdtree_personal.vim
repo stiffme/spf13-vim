@@ -20,7 +20,7 @@ call NERDTreeAddKeyMap({
 function! NERDTreeCtagsHandler(dirnode)
     let dirname = a:dirnode.path.str()
     "silent let output = system(' ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname)
-    let mycmd = 'ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q '.dirname
+    let mycmd = 'ctags -R ' . ' -f  ' . dirname . '\tags ' . '--languages=c,c++,java,delos --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q --tag-relative=always '.dirname
     if( has('job') == 1)
         let output_job = job_start(mycmd, {'exit_cb' : 'CtagsExitHandler'} )
         if(job_status(output_job) != 'fail')
