@@ -36,4 +36,5 @@ endif
 Bundle "vim-scripts/Conque-Shell"
 if (executable('cargo'))
     Bundle 'timonv/vim-cargo'
+    Bundle 'Valloric/YouCompleteMe'
 endif
