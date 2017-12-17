@@ -139,4 +139,5 @@ if isdirectory(expand('~/.vim/bundle/YouCompleteMe'))
     nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 endif
-
+let g:ConqueTerm_PyVersion = 2
+let g:ctrlp_clear_cache_on_exit = 1

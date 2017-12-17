@@ -33,7 +33,7 @@ if has('nvim')
     "Bundle 'frankier/neovim-colors-solarized-truecolor-only'
     Bundle 'romainl/flattened'
 endif
-Bundle "vim-scripts/Conque-Shell"
+Bundle "lrvick/Conque-Shell"
 if (executable('cargo'))
     Bundle 'timonv/vim-cargo'
     Bundle 'Valloric/YouCompleteMe'
