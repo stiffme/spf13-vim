@@ -136,8 +136,27 @@ fun! OpenRemoteHome()
 endfun
 
 if isdirectory(expand('~/.vim/bundle/YouCompleteMe'))
-    nnoremap <leader>jd :YcmCompleter GoTo<CR>
+    nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 endif
 let g:ConqueTerm_PyVersion = 2
 let g:ctrlp_clear_cache_on_exit = 1
+
+" use python3 as default
+let g:ycm_python_binary_path = '/usr/bin/python3'
+au BufNewFile,BufRead *.py
+\ set tabstop=4   "tab宽度
+\ set softtabstop=4 
+\ set shiftwidth=4  
+\ set textwidth=79  "行最大宽度
+\ set expandtab       "tab替换为空格键
+\ set autoindent      "自动缩进
+\ set fileformat=unix   "保存文件格式
+
+map <C-F5> :call RunPython()<CR>
+func! RunPython()
+    exec "W"
+    if &filetype == 'python'
+        exec "!time python3 %"
+    endif
+endfunction

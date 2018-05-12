@@ -7,7 +7,7 @@ endif
 if has('win32')
 	let g:spf13_bundle_groups=['general', 'programming', 'misc' ]
 else
-	let g:spf13_bundle_groups=['general', 'programming', 'misc' ]
+	let g:spf13_bundle_groups=['general', 'programming', 'misc' , 'youcompleteme']
 endif
 
 "let g:airline_powerline_fonts = 1
